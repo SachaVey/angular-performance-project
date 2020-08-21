@@ -6,7 +6,7 @@ export interface Station {
     station: string;
     bfds: string;
     katvst: number;
-    straße: string;
+    strasse: string;
     plz: number;
     ort: string;
     aufgabentraeger: string;

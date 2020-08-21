@@ -1,7 +1,6 @@
-
 <ion-header>
 	<ion-toolbar>
-		<ion-title>Stationen</ion-title>
+		<ion-title>{{stateName}}</ion-title>
 		<img alt="logo" class="logoImg" id="header_logo" height="40" src="./assets/icon/logo.png">
 
 		<ion-buttons slot="start">
@@ -9,8 +8,29 @@
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
-<ion-content>
-  <div *ngFor="let station of stations$ | async">
-    {{station.ort}} {{station.plz}}
-  </div>
+<ion-content id="ionScrollContent" [scrollEvents]="true" (ionScroll)="functionToTriggerOnScroll($event)">
+	<div id="searchBar" class="searchHeader">
+		<ion-searchbar placeholder="Station suchen" animated [(ngModel)]="searchword"></ion-searchbar>
+		<ion-button class="filterBtn" size="small" color="primary">Filter</ion-button>
+	</div>
+	<div *ngIf="!isSearchbarViewed" class="searchIcon">
+		<!-- <ion-button expand="block"></ion-button> -->
+		<button (click)="backToSearchBar()" class="button button-clear button-icon ion-home button-rounded" ng-click="modal.show()">
+			<ion-icon class="iconSize" name="search-outline"></ion-icon>
+		</button>
+	</div>
+	<div>
+		<ion-virtual-scroll [items]="stations$ | async | stationFilter: searchword" approxItemHeight="320px">
+			<ion-card #pageTop  *virtualItem="let station">
+				<ion-card-header>
+					<ion-card-subtitle>{{station.ort}}, {{station.plz}}</ion-card-subtitle>
+					<ion-card-title>{{station.station}}</ion-card-title>
+				</ion-card-header>
+
+				<ion-card-content>
+					<ion-label>{{station.strasse}}</ion-label>
+				</ion-card-content>
+			</ion-card>
+		</ion-virtual-scroll>
+	</div>
 </ion-content>

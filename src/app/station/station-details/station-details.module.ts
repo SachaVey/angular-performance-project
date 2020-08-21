@@ -5,17 +5,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { StationFilterPipe } from 'src/app/shared/pipes/station-filter.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    StationDetailsRoutingModule
-  ],
+    StationDetailsRoutingModule,
+    ScrollingModule
+    ],
   exports: [
     StationDetailsComponent
   ],
-  declarations: [StationDetailsComponent]
+  declarations: [StationDetailsComponent, StationFilterPipe]
 })
 export class StationDetailsModule {}

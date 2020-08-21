@@ -1,5 +1,57 @@
 
-  .logoImg {
+.logoImg {
     float: right;
     height: 37px;
 }
+
+.searchHeader {
+    display: flex;
+}
+
+.filterBtn {
+    margin-top: 12px;
+    height: 36px;
+    padding-right: 14px;
+    font-size: 20px;
+}
+
+.searchIcon {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    margin-top: -25px;
+}
+
+.iconSize {
+    font-size: 25px;
+}
+
+.button-rounded {
+    display: block !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    color: black !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    font-size: 10px !important;
+    font-weight: bold !important;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    outline: none;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+
+  .button-rounded:active {
+    border-style: outset;
+  }
+  
+  
+  .bar .buttons .button.button-icon .icon::before, .bar .buttons .button.button-icon::before, .bar .buttons .button.button-icon.icon-left::before, .bar .buttons .button.button-icon.icon-right::before {
+    font-size: 24px;
+    line-height: 24px;
+  }
