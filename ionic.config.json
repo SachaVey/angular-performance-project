@@ -1,0 +1,7 @@
+{
+  "name": "airport-sw",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

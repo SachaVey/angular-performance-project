@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Stationen</ion-title>
+		<img alt="logo" class="logoImg" id="header_logo" height="40" src="./assets/icon/logo.png">
+
+		<ion-buttons slot="start">
+			<ion-menu-button autoHide="false"></ion-menu-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="fullscreen">
+	<ng-template #loading>
+		<ion-label>
+			Daten werden geladen....
+		</ion-label>
+		<ion-progress-bar type="indeterminate"></ion-progress-bar>
+	</ng-template>
+	<ion-list>
+		<ion-item *ngFor="let item of stations" (click)="showDetails(item.values)">
+			<h3> {{ item.bundesland }}</h3>
+			<ion-note slot="end" color="primary">{{item.values.length}}</ion-note>
+		</ion-item>
+	</ion-list>
+</ion-content>
