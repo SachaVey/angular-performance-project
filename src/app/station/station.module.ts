@@ -1,3 +1,4 @@
+import { StationDetailsComponent } from './station-details/station-details.component';
 import { StationComponent } from './station.component';
 import { StationRoutingModule } from './station-routing.module';
 import { NgModule } from '@angular/core';

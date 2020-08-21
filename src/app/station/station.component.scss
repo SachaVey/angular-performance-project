@@ -14,3 +14,12 @@ table {
     float: right;
     height: 37px;
 }
+
+ion-item{
+  --inner-padding-end: 0px;
+  --padding-start:8px
+}
+
+.clickPointer {
+  cursor: pointer;
+}

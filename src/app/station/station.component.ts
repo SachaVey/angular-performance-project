@@ -1,7 +1,9 @@
+import { Observable } from 'rxjs';
+import { State } from './../models/state.model';
 import { ApiService } from './../core/api-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Station } from '../models/models';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-station',
@@ -10,30 +12,19 @@ import { Observable } from 'rxjs';
 })
 export class StationComponent implements OnInit {
 
-  bundesland;
-  stations: { bundesland: string, values: Station[] }[] = new Array();
+  states$: Observable<State[]>;
+  stations: { stateValue: string, values: Station[] }[] = new Array();
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) { }
 
-  ngOnInit() {
-    this.apiService.getAll<Station[]>().subscribe(result => {
-      this.groupValuesByBundesland(result);
-    });
+  ngOnInit(): void {
+    this.states$ = this.apiService.getAllStates<State[]>();
   }
 
-  private groupValuesByBundesland(result: Station[]) {
-    this.bundesland = new Set(result.map(item => item.bundesland));
-    this.bundesland.forEach(bundesland => {
-      this.stations.push({
-        bundesland,
-        values: result.filter(i => i.bundesland === bundesland)
-      });
-    });
-  }
-
-  showDetails(values: Station[]) {
-    
+  showDetails(stateName: string): void {
+    this.router.navigate(['/station-details', { state: stateName }]);
   }
 
 }

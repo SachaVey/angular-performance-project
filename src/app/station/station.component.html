@@ -16,9 +16,9 @@
 		<ion-progress-bar type="indeterminate"></ion-progress-bar>
 	</ng-template>
 	<ion-list>
-		<ion-item *ngFor="let item of stations" (click)="showDetails(item.values)">
-			<h3> {{ item.bundesland }}</h3>
-			<ion-note slot="end" color="primary">{{item.values.length}}</ion-note>
+		<ion-item padding="none" class="clickPointer" *ngFor="let state of states$ | async" (click)="showDetails(state.state)">
+			<h3> {{ state.state }}</h3>
+			<ion-note slot="end" color="primary">{{state.count}}</ion-note>
 		</ion-item>
 	</ion-list>
 </ion-content>

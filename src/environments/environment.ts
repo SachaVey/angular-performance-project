@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  stationURL: 'http://localhost:3000/dbStations/'
+  stationURL: 'http://localhost:3000/dbStations/',
+  stateURL: 'http://localhost:3000/states/'
 };
 
 /*
