@@ -1,5 +1,6 @@
+import { StationModalPage } from './../../shared/modals/stations/station.modal';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
-import { IonContent, IonVirtualScroll } from '@ionic/angular';
+import { IonContent, IonVirtualScroll, ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Station } from './../../models/station.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -20,7 +21,8 @@ export class StationDetailsComponent implements OnInit {
   searchword: string;
   constructor(
     private route: ActivatedRoute,
-    private apiservice: ApiService
+    private apiservice: ApiService,
+    private modalController: ModalController
   ) { }
 
   ngOnInit(): void {
@@ -51,5 +53,19 @@ export class StationDetailsComponent implements OnInit {
 
   backToSearchBar() {
     this.ionContent.scrollToTop();
+  }
+
+  openModal(station: Station) {
+    this.presentModal(station);
+  }
+
+  async presentModal(station: Station) {
+    const modal = await this.modalController.create({
+      component: StationModalPage,
+      componentProps: {
+        station
+      }
+    });
+    return await modal.present();
   }
 }

@@ -1,3 +1,5 @@
+import { TimeTable } from './time-table.model';
+
 export interface Station {
     bundesland: string;
     rb: string;
@@ -10,4 +12,5 @@ export interface Station {
     plz: number;
     ort: string;
     aufgabentraeger: string;
+    timeTable: TimeTable[];
 }

@@ -9,12 +9,12 @@
 	</ion-toolbar>
 </ion-header>
 <ion-content class="fullscreen">
-	<ng-template #loading>
+	<!-- <ng-template #loading>
 		<ion-label>
 			Daten werden geladen....
 		</ion-label>
 		<ion-progress-bar type="indeterminate"></ion-progress-bar>
-	</ng-template>
+	</ng-template> -->
 	<ion-list>
 		<ion-item padding="none" class="clickPointer" *ngFor="let state of states$ | async" (click)="showDetails(state.state)">
 			<h3> {{ state.state }}</h3>

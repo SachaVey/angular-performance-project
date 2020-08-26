@@ -18,10 +18,14 @@ export class ApiService {
   }
 
   getAllStates<T>(): Observable<T> {
-    return this.http.get<T>(environment.stateURL);
+    return this.http.get<T>(environment.stateURL).pipe(
+      map( res => res = res['response'])
+    );
   }
 
   getAllStations<T>(stateName: string): Observable<T> {
-    return this.http.get<T>(`${environment.stationURL}?bundesland=${stateName}`);
+    return this.http.post<T>(environment.allStationsFromState, {name: stateName}).pipe(
+      map( res => res = res['response'])
+    );
   }
 }

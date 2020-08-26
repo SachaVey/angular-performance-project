@@ -15,13 +15,15 @@
 	</div>
 	<div *ngIf="!isSearchbarViewed" class="searchIcon">
 		<!-- <ion-button expand="block"></ion-button> -->
-		<button (click)="backToSearchBar()" class="button button-clear button-icon ion-home button-rounded" ng-click="modal.show()">
+		<button (click)="backToSearchBar()" class="button button-clear button-icon ion-home button-rounded"
+			ng-click="modal.show()">
 			<ion-icon class="iconSize" name="search-outline"></ion-icon>
 		</button>
 	</div>
 	<div>
 		<ion-virtual-scroll [items]="stations$ | async | stationFilter: searchword" approxItemHeight="320px">
-			<ion-card #pageTop  *virtualItem="let station">
+
+			<ion-card #pageTop *virtualItem="let station" (click)="openModal(station)">
 				<ion-card-header>
 					<ion-card-subtitle>{{station.ort}}, {{station.plz}}</ion-card-subtitle>
 					<ion-card-title>{{station.station}}</ion-card-title>
@@ -31,6 +33,8 @@
 					<ion-label>{{station.strasse}}</ion-label>
 				</ion-card-content>
 			</ion-card>
+
+
 		</ion-virtual-scroll>
 	</div>
 </ion-content>

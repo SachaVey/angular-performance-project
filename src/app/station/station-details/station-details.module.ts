@@ -1,3 +1,4 @@
+import { ModalModule } from './../../shared/modals/modal.module';
 import { StationDetailsRoutingModule } from './station-details-routing.module';
 import { StationDetailsComponent } from './station-details.component';
 import { NgModule } from '@angular/core';
@@ -14,11 +15,12 @@ import { StationFilterPipe } from 'src/app/shared/pipes/station-filter.pipe';
     FormsModule,
     IonicModule,
     StationDetailsRoutingModule,
-    ScrollingModule
-    ],
+    ScrollingModule,
+    ModalModule
+  ],
   exports: [
     StationDetailsComponent
   ],
   declarations: [StationDetailsComponent, StationFilterPipe]
 })
-export class StationDetailsModule {}
+export class StationDetailsModule { }
