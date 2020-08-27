@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
     private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.getAll<Station>().subscribe( val => {
+    this.apiService.getAll().subscribe( val => {
       console.log(val);
     });
   }

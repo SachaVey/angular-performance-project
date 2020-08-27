@@ -11,12 +11,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAll<T>(): Observable<T> {
-    return this.http.get<T>(environment.stationURL);
+  getAll() {
+    console.log('Test');
+    return this.http.get(environment.stationURL);
   }
 
-  getAllStates<T>(): Observable<T> {
-    return this.http.get<T>(environment.stateURL).pipe(
+  getAllFederalStates() {
+    return this.http.get(environment.stateURL).pipe(
       map(
         (res: any) => res = res.response
       )

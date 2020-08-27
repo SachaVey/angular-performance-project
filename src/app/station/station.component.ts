@@ -1,9 +1,12 @@
+import { getAllStates } from './../states/selectors/state.selectors';
 import { Observable } from 'rxjs';
-import { State } from './../models/state.model';
 import { ApiService } from './../core/api-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Station } from '../models/models';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { State } from '../states/reducers/state.reducer';
+import { LoadFederalStates } from '../states/actions/state.actions';
 
 @Component({
   selector: 'app-station',
@@ -12,15 +15,15 @@ import { Router } from '@angular/router';
 })
 export class StationComponent implements OnInit {
 
-  states$: Observable<State[]>;
-  stations: { stateValue: string, values: Station[] }[] = new Array();
+  states$: Observable<Land[]>;
   constructor(
-    private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private store: Store<State>
   ) { }
 
   ngOnInit(): void {
-    this.states$ = this.apiService.getAllStates<State[]>();
+    this.states$ = this.store.pipe(select(getAllStates));
+    this.store.dispatch(new LoadFederalStates());
   }
 
   showDetails(stateName: string): void {

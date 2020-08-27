@@ -1,2 +1,2 @@
 export * from './station.model';
-export * from './state.model';
+export * from './federal-state.model';
