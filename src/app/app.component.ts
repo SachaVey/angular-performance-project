@@ -20,7 +20,7 @@ export class AppComponent {
   ) {
     this.initializeApp();
   }
-
+  
   openView(viewLink: string): void {
     this.menuController.close();
     this.route.navigateByUrl(viewLink);
