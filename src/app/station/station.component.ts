@@ -1,8 +1,7 @@
 import { getAllStates } from './../states/selectors/state.selectors';
 import { Observable } from 'rxjs';
-import { ApiService } from './../core/api-service.service';
 import { Component, OnInit } from '@angular/core';
-import { Station } from '../models/models';
+import { FederalState } from '../models/models';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { State } from '../states/reducers/state.reducer';
@@ -15,7 +14,7 @@ import { LoadFederalStates } from '../states/actions/state.actions';
 })
 export class StationComponent implements OnInit {
 
-  states$: Observable<Land[]>;
+  states$: Observable<FederalState[]>;
   constructor(
     private router: Router,
     private store: Store<State>

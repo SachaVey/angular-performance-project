@@ -18,12 +18,6 @@ import { FederalState } from 'src/app/models/models';
 export class StateEffects {
   @Effect()
   loadStates$ = this.actions$.pipe(
-    // ofType(StateActionTypes.LoadStates),
-    // switchMap(() =>
-    //   this.apiService.getAll().pipe(
-    //     map((states: Land[]) => new LoadStatesSuccess({ states })),
-    //     catchError(error => of(new LoadStatesFailure({ error }))))
-    // )
     ofType(StateActionTypes.LoadFederalStates),
     mergeMap(() =>
       this.apiService.getAllFederalStates()
